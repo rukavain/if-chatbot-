@@ -12,6 +12,7 @@
     "@google/genai": "^0.7.0",
     "@google/generative-ai": "^0.24.0",
     "axios": "^1.8.4",
+    "framer-motion": "^12.6.2",
     "next": "15.2.4",
     "openai": "^4.90.0",
     "react": "^19.0.0",

@@ -1,0 +1,30 @@
+html,
+body,
+#root {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  justify-content: center;
+  align-items: center;
+}
+
+.grid {
+  position: relative;
+  width: calc(10 * 15px);
+  height: calc(12 * 15px);
+}
+
+.base {
+  width: calc(10 * 15px);
+  height: 10px;
+  background-color: #c6d4d7;
+  margin-bottom: calc(8 * 15px);
+}
+
+.piece {
+  position: absolute;
+  top: 0;
+  left: 0;
+}

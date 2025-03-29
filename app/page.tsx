@@ -1,6 +1,8 @@
 "use client";
 import { useState, useEffect } from "react";
 import Image from "next/image";
+import TetrisLoader from "./components/TetrisLoader";
+import { div } from "framer-motion/client";
 
 export default function Home() {
   const [messages, setMessages] = useState<{ sender: string; text: string }[]>(
@@ -59,36 +61,43 @@ export default function Home() {
   };
 
   return (
-    <div className="p-6 overflow-hidden max-w-3xl m-0 max-lg:p-0.5 min-w-2xl max-lg:min-w-0 mx-auto flex flex-col justify-center h-svh">
+    <div className="p-6 max-w-3xl m-0 max-lg:p-0.5 min-w-2xl max-lg:min-w-0 mx-auto flex flex-col justify-center h-svh">
       <div className="flex m-0 flex-col justify-between p-12 max-xl:p-4 rounded-lg h-full border border-gray-200">
         <div className="space-y-2 mb-4 max-h-96 overflow-y-auto rounded min-h-6/7">
           {messages.length === 0 ? (
-            <div className="flex flex-col items-center justify-center gap-4 ">
-              <div>
-                <div className="block max-lg:hidden">
-                  <Image
-                    src="/icons/bot.png"
-                    alt="Chatbot"
-                    width={100}
-                    height={100}
-                  ></Image>
-                </div>
-                <div className="hidden max-lg:block">
-                  <Image
-                    src="/icons/bot.png"
-                    alt="Chatbot"
-                    width={50}
-                    height={50}
-                  ></Image>
-                </div>
+            loading ? (
+              <div className="flex flex-col justify-center items-center">
+                <TetrisLoader />
+                <h1 className="text-2xl font-bold">Bro is thinking 🤔 ...</h1>
               </div>
-              <h1 className="text-4xl max-lg:text-2xl font-bold text-center">
-                Welcome to if(chatbot)!
-              </h1>
-              <h2 className="text-lg max-lg:text-sm text-gray-500">
-                Type a message to start a conversation.
-              </h2>
-            </div>
+            ) : (
+              <div className="flex flex-col items-center justify-center gap-4">
+                <div>
+                  <div className="block max-lg:hidden">
+                    <Image
+                      src="/icons/bot.png"
+                      alt="Chatbot"
+                      width={100}
+                      height={100}
+                    />
+                  </div>
+                  <div className="hidden max-lg:block">
+                    <Image
+                      src="/icons/bot.png"
+                      alt="Chatbot"
+                      width={50}
+                      height={50}
+                    />
+                  </div>
+                </div>
+                <h1 className="text-4xl max-lg:text-2xl font-bold text-center">
+                  Welcome to if(chatbot)!
+                </h1>
+                <h2 className="text-lg max-lg:text-sm text-gray-500">
+                  Type a message to start a conversation.
+                </h2>
+              </div>
+            )
           ) : (
             <div className="flex flex-col gap-4">
               {messages.map((msg, idx) => (
@@ -97,7 +106,7 @@ export default function Home() {
                   className={msg.sender === "user" ? "text-right" : "text-left"}
                 >
                   <p
-                    className={`p-2 inline-block rounded text-sm ${
+                    className={`p-2 inline-block rounded text-sm max-w-md ${
                       msg.sender === "user" ? "bg-blue-200" : "bg-gray-200"
                     }`}
                   >
@@ -105,13 +114,24 @@ export default function Home() {
                   </p>
                 </div>
               ))}
+
+              {loading && (
+                <div className="flex flex-col justify-center items-start bg-gray-200 rounded-md py-2 px-6 max-w-max">
+                  <TetrisLoader />
+                  <h1 className="text-left font-bold">
+                    Bro is thinking 🤔 ...
+                  </h1>
+                </div>
+              )}
             </div>
           )}
         </div>
+
         <div className="flex gap-2 p-4 rounded-xl shadow-xl w-full justify-self-end">
           <input
             className="p-2 flex-1 rounded outline-none"
             value={input}
+            disabled={loading}
             onChange={(e) => setInput(e.target.value)}
             onKeyDown={(e) => e.key === "Enter" && sendMessage()}
             placeholder="Type your message..."
