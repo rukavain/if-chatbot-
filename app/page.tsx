@@ -59,7 +59,7 @@ export default function Home() {
   };
 
   return (
-    <div className="p-6 overflow-hidden m-0 max-lg:p-0.5 min-w-2xl max-lg:min-w-0 mx-auto flex flex-col justify-center h-svh">
+    <div className="p-6 overflow-hidden max-w-3xl m-0 max-lg:p-0.5 min-w-2xl max-lg:min-w-0 mx-auto flex flex-col justify-center h-svh">
       <div className="flex m-0 flex-col justify-between p-12 max-xl:p-4 rounded-lg h-full border border-gray-200">
         <div className="space-y-2 mb-4 max-h-96 overflow-y-auto rounded min-h-6/7">
           {messages.length === 0 ? (
