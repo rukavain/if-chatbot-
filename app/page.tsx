@@ -59,8 +59,8 @@ export default function Home() {
   };
 
   return (
-    <div className="p-6 max-lg:p-2 min-w-2xl max-w-2xl max-xl:max-w-screen  max-xl:min-w-md mx-auto flex flex-col justify-between h-svh">
-      <div className="flex flex-col justify-between p-12 max-xl:p-4 rounded-lg h-full border-2 border-gray-200">
+    <div className="p-6 overflow-hidden m-0 max-lg:p-0.5 min-w-2xl max-lg:min-w-0 mx-auto flex flex-col justify-center h-svh">
+      <div className="flex m-0 flex-col justify-between p-12 max-xl:p-4 rounded-lg h-full border border-gray-200">
         <div className="space-y-2 mb-4 max-h-96 overflow-y-auto rounded min-h-6/7">
           {messages.length === 0 ? (
             <div className="flex flex-col items-center justify-center gap-4 ">
