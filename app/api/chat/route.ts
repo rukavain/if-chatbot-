@@ -23,7 +23,7 @@ export async function POST(req: Request) {
           Authorization: `Bearer ${apiKey}`,
         },
         body: JSON.stringify({
-          model: "openai/gpt-3.5-turbo", // You can change to other supported models
+          model: "deepseek/deepseek-chat-v3-0324:free",
           messages: [{ role: "user", content: message }],
         }),
       }

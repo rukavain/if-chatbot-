@@ -47,7 +47,6 @@ export async function POST(req: Request) {
   try {
     const { message } = await req.json();
 
-    // Check for empty or whitespace-only message
     if (!message || message.trim().length === 0) {
       return NextResponse.json(
         { reply: "Please type a message." },
