@@ -18,37 +18,36 @@ export default function Home() {
   const [loading, setLoading] = useState(false);
 
   const sendMessage = async () => {
-    if (!input) return;
-
+    if (!input.trim()) return;
     setLoading(true);
     try {
-      const response = await fetch("/chat", {
+      const response = await fetch("/api/chat", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ text: input }),
+        body: JSON.stringify({ message: input }),
       });
 
       const data = await response.json();
 
       if (response.ok && data.reply) {
-        setMessages([
-          ...messages,
+        setMessages((prev) => [
+          ...prev,
           { sender: "user", text: input },
-          { sender: "bot", text: data.reply },
+          { sender: "bot", text: data.reply || "No reply" },
         ]);
       } else {
-        setMessages([
-          ...messages,
+        setMessages((prev) => [
+          ...prev,
           { sender: "user", text: input },
           { sender: "bot", text: "No reply" },
         ]);
         console.error("Backend error:", data);
       }
     } catch (error) {
-      setMessages([
-        ...messages,
+      setMessages((prev) => [
+        ...prev,
         { sender: "user", text: input },
         { sender: "bot", text: "Error occurred" },
       ]);
