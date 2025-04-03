@@ -33,7 +33,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`font-inter flex flex-col justify-center items-center h-screen w-full ${inter.variable} antialiased`}
+        className={`font-inter flex flex-col justify-center items-center h-max  w-full ${inter.variable} antialiased`}
       >
         <Navbar />
         {children}
