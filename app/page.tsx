@@ -7,6 +7,7 @@ export const metadata: Metadata = {
   title: "if(chatbot)",
   ...defaultMetadata,
 };
+
 export default function Home() {
   return (
     <main>

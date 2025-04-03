@@ -38,6 +38,9 @@ export default function Content() {
           { sender: "user", text: input },
           { sender: "bot", text: data.reply || "No reply" },
         ]);
+        if (loading) {
+          setInput("");
+        }
       } else {
         setMessages((prev) => [
           ...prev,
@@ -113,10 +116,8 @@ export default function Content() {
                 </div>
               ))}
               {loading && (
-                <div className="flex flex-col justify-center items-start bg-gray-200 rounded-md py-2 px-6">
-                  <div>
-                    <Skeleton />
-                  </div>
+                <div className="flex flex-col max-w-[20svw] justify-center items-start rounded-lg bg-gray-200 p-1">
+                  <Skeleton />
                 </div>
               )}
             </div>
