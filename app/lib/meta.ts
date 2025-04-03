@@ -20,7 +20,7 @@ export const defaultMetadata: Metadata = {
     locale: "en-US",
     images: [
       {
-        url: "https://if-chatbot.vercel.app/screenshot.png",
+        url: "https://if-chatbot.vercel.app/image.png",
         alt: "if(chatbot) - The AI That Feels Like an If-Else Machine",
       },
     ],
