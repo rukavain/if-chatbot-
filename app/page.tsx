@@ -4,14 +4,13 @@ import { defaultMetadata } from "./lib/meta";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "MabsrenCode",
+  title: "if(chatbot)",
   ...defaultMetadata,
 };
-export const page = () => {
+export default function Home() {
   return (
     <main>
       <Content />
     </main>
   );
-};
-export default page;
+}
